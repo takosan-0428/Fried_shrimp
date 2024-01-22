@@ -4,14 +4,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Battle Start</title>
+    <link rel="stylesheet" href="battle.css">
 </head>
 <body>
-    <h1>Battle Start</h1>
-    <p>Welcome, <span th:text="${player.name}"></span>!</p>
-    <!-- バトル画面のデザインやフォームを適切に設計 -->
     <form th:action="@{/battle/result}" th:object="${battle}" method="post">
         <!-- バトルに関するフォーム項目を適切に設計 -->
-        <input type="submit" value="Attack">
+
+        <!-- 敵HP -->
+        <p th:text="'敵HP: ' + ${battle.enemyHP}"></p>
+
+        <!-- 自分HP -->
+        <p th:text="'自分HP: ' + ${battle.playerHP}"></p>
+
+        <div class="battle_bar">
+            <!-- バトルメッセージ -->
+            <p class="message" th:text="${battleMessage}"></p>
+
+            <div class="battle_buttons">
+                <!-- 技ボタン -->
+                <input type="submit" value="Attack1" class="battle_button" th:onclick="'attack(1)'">
+                <input type="submit" value="Attack2" class="battle_button" th:onclick="'attack(2)"><br/>
+                <input type="submit" value="Attack3" class="battle_button" th:onclick="'attack(3)'">
+                <input type="submit" value="Attack4" class="battle_button" th:onclick="'attack(4)'>
+            </div>
+        </div>
     </form>
 </body>
 </html>
