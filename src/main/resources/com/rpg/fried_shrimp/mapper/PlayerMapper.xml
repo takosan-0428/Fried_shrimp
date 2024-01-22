@@ -14,6 +14,7 @@
 		<result property="jobId" column="job_id" />
 	</resultMap>
 
+
 	<select id="findById" resultMap="PlayerResultMap">
 		SELECT * FROM player WHERE id =
 		#{id}
@@ -24,19 +25,22 @@
 		name = #{name}
 	</select>
 
-	<insert id="insertPlayer" parameterType="com.rpg.fried_shrimp.model.Player"
+	<insert id="insertPlayer"
+		parameterType="com.rpg.fried_shrimp.model.Player"
 		useGeneratedKeys="true" keyProperty="playerId">
-		INSERT INTO player (playerName,
-		jobId) VALUES (#{playerName}, #{jobId})
+		INSERT INTO player (player_name, job_id) VALUES (#{playerName}, #{jobId})
 	</insert>
+
 
 	<select id="findAll" resultMap="PlayerResultMap">
 		SELECT * FROM player
 	</select>
 
-	<update id="update" parameterType="com.rpg.fried_shrimp.model.Player">
+	<update id="update"
+		parameterType="com.rpg.fried_shrimp.model.Player">
 		UPDATE player SET total_turns
-		= #{totalTurns}, total_points = #{totalPoints}
+		= #{totalTurns},
+		total_points = #{totalPoints}
 		WHERE id = #{id}
 	</update>
 	<select id="findAvailableSkills"

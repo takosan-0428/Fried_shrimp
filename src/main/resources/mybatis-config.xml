@@ -7,5 +7,31 @@
         <setting name="lazyLoadingEnabled" value="true" />
         <setting name="useColumnLabel" value="true" />
         <setting name="mapUnderscoreToCamelCase" value="true" />
+        <!-- ログの設定（例: SLF4Jを使用） -->
+        <setting name="logImpl" value="SLF4J" />
+        <!-- キャッシュの設定 -->
+        <setting name="cacheEnabled" value="true" />
     </settings>
+
+    <!-- データベースの設定 -->
+    <dataSource type="POOLED">
+        <!-- MariaDB JDBC ドライバ -->
+        <property name="driver" value="org.mariadb.jdbc.Driver" />
+
+        <!-- MariaDB 接続 URL -->
+        <property name="url" value="jdbc:mariadb://localhost:3340/FriedShrimp" />
+
+        <!-- MariaDB ユーザー名 -->
+        <property name="username" value="root" />
+
+        <!-- MariaDB パスワード -->
+        <property name="password" value="12345" />
+    </dataSource>
+
+    <!-- マッパーの自動リロードを有効にする -->
+    <mappers>
+        <mapper resource="com/rpg/fried_shrimp/mapper/PlayerMapper.xml" />
+    </mappers>
+
+    <!-- 他の設定があればここに追加 -->
 </configuration>

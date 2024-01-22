@@ -36,20 +36,21 @@
 <body>
 	<h1>FriedShrimp Game</h1>
 
-	<form id="playerForm">
+	<form id="playerForm" action="/create/player" method="post">
 		<label for="playerName">プレイヤー名: </label>
 		<input type="text" id="playerName" name="playerName" required>
 
 		<label for="playerClass">職業: </label>
-		<select id="playerClass" name="playerClass" required>
+		<select id="playerClass" name="jobId" required>
 			<option th:each="job : ${jobs}" th:if="${job != null}" th:value="${job.jobId}"
 				th:text="${job.jobName + ' (HP: ' + job.jobHp + ')'}"></option>
 		</select>
 
 
-		<button type="button" onclick="startGame()" th:action="@{/battle}">ゲーム開始</button>
+		<button type="submit">登録</button>
 		<button type="button" onclick="showRanking()" th:action="@{/ranking}">ランキング表示</button>
-	</form>
+	
+</form>
 
 	<script>
 		function startGame() {

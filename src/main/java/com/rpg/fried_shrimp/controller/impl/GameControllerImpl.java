@@ -26,9 +26,9 @@ public class GameControllerImpl implements GameController {
 
 	@GetMapping("/")
     public String index(Model model) {
-        
+        // Jobテーブルから取得
 		List<Job> jobs = jobMapper.getAllJob();
-		
+		// thymeleafに追加
         model.addAttribute("jobs", jobs);
         return "index";
 	}

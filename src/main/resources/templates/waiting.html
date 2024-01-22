@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting Page</title>
+    <link th:href="@{/css/waiting.css}" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #0f60eb;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Waiting Page</h1>
+
+    <div>
+        <p>プレイヤー情報:</p>
+        <p th:text="${'プレイヤー名: ' + player.playerName}"></p>
+        <p th:text="${'職業: ' + player.playerClass}"></p>
+        <p th:text="${'HP: ' + player.playerHp}"></p>
+    </div>
+
+    <!-- ここに追加の待機用コンテンツを追加できます -->
+
+</body>
+
+</html>

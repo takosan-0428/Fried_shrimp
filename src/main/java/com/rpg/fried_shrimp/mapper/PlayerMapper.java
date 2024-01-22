@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.rpg.fried_shrimp.dto.CreatePlayer;
 import com.rpg.fried_shrimp.model.Player;
 
+//PlayerMapperインターフェースから@Insertを削除
 @Mapper
 public interface PlayerMapper {
 
@@ -14,6 +14,8 @@ public interface PlayerMapper {
 
 	List<Player> getAllPlayers();
 
-	Player insertPlayer(CreatePlayer createPlayer);
 
+	Player insertPlayer(String playerName, int jobId);
+
+	int insertPlayer(Player newPlayer);
 }
