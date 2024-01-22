@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FriedShrimp Game</title>
+	<link th:href="@{/css/index.css}" rel="stylesheet">
+	<link rel="icon" href="data:,">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin: 20px;
+		}
+
+		h1 {
+			color: #eb0f0f;
+		}
+
+		input,
+		select,
+		button {
+			margin: 10px;
+			padding: 5px;
+		}
+
+		/* 職業リストを横長にするスタイル */
+		select {
+			width: 200px;
+			/* 適切な幅を指定してください */
+		}
+	</style>
+</head>
+
+<body>
+	<h1>FriedShrimp Game</h1>
+
+	<form id="playerForm">
+		<label for="playerName">プレイヤー名: </label>
+		<input type="text" id="playerName" name="playerName" required>
+
+		<label for="playerClass">職業: </label>
+		<select id="playerClass" name="playerClass" required>
+			<option th:each="job : ${jobs}" th:if="${job != null}" th:value="${job.jobId}"
+				th:text="${job.jobName + ' (HP: ' + job.jobHp + ')'}"></option>
+		</select>
+
+
+		<button type="button" onclick="startGame()" th:action="@{/battle}">ゲーム開始</button>
+		<button type="button" onclick="showRanking()" th:action="@{/ranking}">ランキング表示</button>
+	</form>
+
+	<script>
+		function startGame() {
+			// ゲーム開始の処理を追加
+			alert('ゲームが開始されました！');
+		}
+
+		function showRanking() {
+			// ランキング表示の処理を追加
+			alert('ランキングが表示されます！');
+		}
+	</script>
+</body>
+
+</html>

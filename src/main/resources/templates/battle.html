@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/battle/start.html -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Battle Start</title>
+</head>
+<body>
+    <h1>Battle Start</h1>
+    <p>Welcome, <span th:text="${player.name}"></span>!</p>
+    <!-- バトル画面のデザインやフォームを適切に設計 -->
+    <form th:action="@{/battle/result}" th:object="${battle}" method="post">
+        <!-- バトルに関するフォーム項目を適切に設計 -->
+        <input type="submit" value="Attack">
+    </form>
+</body>
+</html>
