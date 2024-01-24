@@ -2,35 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waiting Page</title>
-    <link th:href="@{/css/waiting.css}" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #0f60eb;
-        }
-    </style>
+    <!-- head 部分の内容（省略） -->
 </head>
 
 <body>
-    <h1>Waiting Page</h1>
+    <h1>FriedShrimp Game - Waiting</h1>
 
     <div>
-        <p>プレイヤー情報:</p>
-        <p th:text="${'プレイヤー名: ' + player.playerName}"></p>
-        <p th:text="${'職業: ' + player.playerClass}"></p>
-        <p th:text="${'HP: ' + player.playerHp}"></p>
+        <!-- プレイヤー情報の表示 -->
+        <h2>Player Information</h2>
+        <p th:text="'Player Name: ' + ${player.playerName}"></p>
+        <p th:text="'Job: ' + ${player.job.jobName}"></p>
+        <p th:text="'Player Health: ' + ${player.hp}"></p>
     </div>
 
-    <!-- ここに追加の待機用コンテンツを追加できます -->
+    <div id="gameScreen">
+        <!-- Game content goes here -->
+        <h2>Game Screen</h2>
+        <p id="opponentHealth">Opponent Health: 100</p>
+        <button id="attackButton" onclick="attack()">Attack</button>
+        
+        <!-- サーバーサイドで生成したメッセージを表示 -->
+        <p th:text="${gameStartMessage}"></p>
+    </div>
 
+    <script>
+        // スクリプト部分の内容（省略）
+    </script>
 </body>
 
 </html>

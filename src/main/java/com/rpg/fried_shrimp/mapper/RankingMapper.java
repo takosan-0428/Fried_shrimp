@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.rpg.fried_shrimp.dto.RankPoints;
 import com.rpg.fried_shrimp.model.Player;
 
 @Mapper
 public interface RankingMapper {
 
-    List<Player> findTopRanking();
+	List<Player> findTopRanking();
 
-    // 他にも必要なメソッドがあれば追加
+	void insertRankPoints(RankPoints rankPoints);
+
 }
-

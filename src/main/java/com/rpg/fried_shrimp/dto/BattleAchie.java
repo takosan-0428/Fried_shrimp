@@ -1,25 +1,19 @@
 package com.rpg.fried_shrimp.dto;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.Serializable;
 
-import com.rpg.fried_shrimp.mapper.BattleMapper;
+import com.rpg.fried_shrimp.model.Battle.BattleResult;
 
-public class BattleAchie {
-	@Autowired
-	BattleMapper battleMapper;
+public class BattleAchie implements Serializable{
 	
-	private final CreatePlayer createPlayer;
+	int battleId;
+	int playerId;
+	int enemyId;
 	int turns;
-	int points;
+	BattleResult battleResult;
 	
-	public BattleAchie(CreatePlayer createPlayer) {
-		this.createPlayer = createPlayer;
-	}
-	public void setTurns() {
-		this.points = battleMapper.getPoint(createPlayer.playerId);
-	}
-	public int getTurns() {
-		return createPlayer.turns;
-	}
+	
+	
+
 
 }

@@ -2,67 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FriedShrimp Game</title>
-	<link th:href="@{/css/index.css}" rel="stylesheet">
-	<link rel="icon" href="data:,">
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			text-align: center;
-			margin: 20px;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FriedShrimp Game</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link rel="icon" href="data:,">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
 
-		h1 {
-			color: #eb0f0f;
-		}
+        h1 {
+            color: #eb0f0f;
+        }
 
-		input,
-		select,
-		button {
-			margin: 10px;
-			padding: 5px;
-		}
+        input,
+        select,
+        button {
+            margin: 10px;
+            padding: 5px;
+        }
 
-		/* 職業リストを横長にするスタイル */
-		select {
-			width: 200px;
-			/* 適切な幅を指定してください */
-		}
-	</style>
+        /* 職業リストを横長にするスタイル */
+        select {
+            width: 200px;
+            /* 適切な幅を指定してください */
+        }
+
+        /* Game screen style */
+        #gameScreen {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-	<h1>FriedShrimp Game</h1>
+    <h1>FriedShrimp Game</h1>
 
-	<form id="playerForm" action="/create/player" method="post">
-		<label for="playerName">プレイヤー名: </label>
-		<input type="text" id="playerName" name="playerName" required>
+    <form th:action="@{/create/player}" method="post" th:object="${player}" id="playerForm">
+        <label for="playerName">プレイヤー名: </label>
+        <input type="text" id="playerName" name="playerName" required>
 
-		<label for="playerClass">職業: </label>
-		<select id="playerClass" name="jobId" required>
-			<option th:each="job : ${jobs}" th:if="${job != null}" th:value="${job.jobId}"
-				th:text="${job.jobName + ' (HP: ' + job.jobHp + ')'}"></option>
-		</select>
+        <label for="playerClass">職業: </label>
+        <select id="playerClass" name="jobId" required>
+            <option th:each="job : ${jobs}" th:if="${job != null}" th:value="${job.jobId}"
+                th:text="${job.jobName + ' (HP: ' + job.jobHp + ')'}"></option>
+        </select>
 
+        <button type="button" onclick="showRanking()">ランキング表示</button>
+        <button type="button" onclick="startGame()">Start Game</button>
+    </form>
 
-		<button type="submit">登録</button>
-		<button type="button" onclick="showRanking()" th:action="@{/ranking}">ランキング表示</button>
-	
-</form>
+    <script>
+        function startGame() {
+            // フォームを取得
+            var form = document.getElementById('playerForm');
 
-	<script>
-		function startGame() {
-			// ゲーム開始の処理を追加
-			alert('ゲームが開始されました！');
-		}
+            // フォームを送信
+            form.submit();
+        }
 
-		function showRanking() {
-			// ランキング表示の処理を追加
-			alert('ランキングが表示されます！');
-		}
-	</script>
+        function showRanking() {
+            // ランキング表示のロジックを追加
+            alert('ランキングが表示されます！');
+        }
+    </script>
 </body>
 
 </html>

@@ -2,36 +2,56 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
 <configuration>
-    <settings>
-        <setting name="lazyLoadingEnabled" value="true" />
-        <setting name="useColumnLabel" value="true" />
-        <setting name="mapUnderscoreToCamelCase" value="true" />
-        <!-- ログの設定（例: SLF4Jを使用） -->
-        <setting name="logImpl" value="SLF4J" />
-        <!-- キャッシュの設定 -->
-        <setting name="cacheEnabled" value="true" />
-    </settings>
+	<properties>
+		<!-- プロパティの設定があればここに追加 -->
+	</properties>
+	<settings>
+		<!-- 遅延読み込みを有効にする -->
+		<setting name="lazyLoadingEnabled" value="true" />
 
-    <!-- データベースの設定 -->
-    <dataSource type="POOLED">
-        <!-- MariaDB JDBC ドライバ -->
-        <property name="driver" value="org.mariadb.jdbc.Driver" />
+		<!-- カラムラベルを使用する -->
+		<setting name="useColumnLabel" value="true" />
 
-        <!-- MariaDB 接続 URL -->
-        <property name="url" value="jdbc:mariadb://localhost:3340/FriedShrimp" />
+		<!-- アンダースコアで区切られたカラム名をキャメルケースに変換する -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 
-        <!-- MariaDB ユーザー名 -->
-        <property name="username" value="root" />
+		<!-- ログを実装するために SLF4J を使用する -->
+		<setting name="logImpl" value="SLF4J" />
 
-        <!-- MariaDB パスワード -->
-        <property name="password" value="12345" />
-    </dataSource>
+		<!-- キャッシュを有効にする -->
+		<setting name="cacheEnabled" value="true" />
 
-    <!-- マッパーの自動リロードを有効にする -->
-    <mappers>
-        <mapper resource="com/rpg/fried_shrimp/mapper/PlayerMapper.xml" />
-    </mappers>
+		<!-- クエリの実行に許される時間を 10 秒に設定する -->
+		<setting name="defaultStatementTimeout" value="10" />
+		
+		<!-- 自動マッピング -->
+		<setting name="autoMappingUnknownColumnBehavior" value="FULL" />
+	</settings>
+	<environments = default ">
+		<environment>
+			<!-- データベースの設定 -->
+			<dataSource type="POOLED">
+				<!-- MariaDB JDBC ドライバ -->
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
 
-    <!-- 他の設定があればここに追加 -->
+				<!-- MariaDB 接続 URL -->
+				<property name="url"
+					value="jdbc:mariadb://localhost:3340/FriedShrimp" />
+
+				<!-- MariaDB ユーザー名 -->
+				<property name="username" value="root" />
+
+				<!-- MariaDB パスワード -->
+				<property name="password" value="12345" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- マッパーの自動リロードを有効にする -->
+	<mappers>
+		<mapper resource="com/rpg/fried_shrimp/mapper/PlayerMapper.xml" />
+	</mappers>
+
 </configuration>
